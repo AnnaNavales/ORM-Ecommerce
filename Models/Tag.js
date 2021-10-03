@@ -1,11 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
+// const { Tag } = require('.');
 const sequelize = require('../config/connection');
 
 // create our User model
-class User extends Model {}
+ class Tag extends Model { }
 
 // create fields/columns for User model
-User.init(
+Tag.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,33 +14,22 @@ User.init(
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4]
-      }
+    
+
+    tag_name: {
+      type: DataTypes.STRING
     }
-  },
+      
+    },
+    
+
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user'
+    modelName: 'tag'
   }
 );
 
-module.exports = User;
+module.exports = Tag;
